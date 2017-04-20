@@ -3,7 +3,7 @@
     <envs>
       <env name="DEBUG" value="weixin_node:*" />
     </envs>
-    <browser url="http://localhost:3000/" />
+    <browser with-js-debugger="true" url="http://localhost:3000/" />
     <method />
   </configuration>
 </component>
