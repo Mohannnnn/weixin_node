@@ -59,12 +59,12 @@ router.use('/' ,  wechat(config ,
                 url: 'https://fututer.github.io/'
             }]);
         } else if (message.Content == 'github') {
-            res.reply({
+            res.reply([{
                 title: '我的Github',
                 description: '进入我的Github',
                 picurl: 'http://img2.niushe.com/upload/201304/19/14-22-31-71-26144.jpg',
                 url: 'https://github.com/fututer'
-            });
+            }]);
         } else if ( typeof(parseInt(message.Content)) == 'number') {
             const data = parseInt(message.Content);
             const dataArr = [];
