@@ -66,7 +66,7 @@ router.use('/' ,  wechat(config ,
             });
         } else if ( typeof(parseInt(message.content)) == 'number') {
             const data = parseInt(message.content);
-            let dataArr = [];
+            const dataArr = [];
 
             for (var i = 0 ; i < parseInt(data/2) ; i++) {
                 if(data%(i+1) == 0) {
