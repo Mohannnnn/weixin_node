@@ -50,22 +50,23 @@ const config = require('../config.js');
 
 router.use('/' ,  wechat(config ,
     wechat.text(function (message , req , res , next ) {
-        if (message.content == 'blog') {
+        console.log(message);
+        if (message.Content == 'blog') {
             res.reply([{
                 title: '我的Blog',
                 description: '我的一些关于前端方面的博客',
                 picurl: 'http://s6.sinaimg.cn/mw690/001whaJHzy6NkfRttDD15&690',
                 url: 'https://fututer.github.io/'
             }]);
-        } else if (message.content == 'github') {
+        } else if (message.Content == 'github') {
             res.reply({
                 title: '我的Github',
                 description: '进入我的Github',
                 picurl: 'http://img2.niushe.com/upload/201304/19/14-22-31-71-26144.jpg',
                 url: 'https://github.com/fututer'
             });
-        } else if ( typeof(parseInt(message.content)) == 'number') {
-            const data = parseInt(message.content);
+        } else if ( typeof(parseInt(message.Content)) == 'number') {
+            const data = parseInt(message.Content);
             const dataArr = [];
 
             for (var i = 0 ; i < parseInt(data/2) ; i++) {
@@ -76,10 +77,9 @@ router.use('/' ,  wechat(config ,
             dataArr.push(data);
             dataArr.sort(function (a,b) {return a -b;});
 
-            //const datastring = dataArr.join(',');
             res.reply({
                 type: 'text',
-                content: parseInt(message.content) + '的公约数有： ' + dataArr.join(',')
+                content: parseInt(message.Content) + '的约数有： ' + dataArr.join(',')
             });
         } else {
             res.reply({
@@ -88,6 +88,7 @@ router.use('/' ,  wechat(config ,
             });
         }
     }).image(function (message ,req ,res ,next) {
+        console.log(message);
         res.reply(
             [{
                 title: "返回的图片",
@@ -96,40 +97,45 @@ router.use('/' ,  wechat(config ,
             }]
         );
     }).voice(function (message , req ,res ,next) {
+        console.log(message);
         res.reply({
             type  : 'text',
             content : message.Recognition
         });
     }).video(function (message , req ,res , next) {
+        console.log(message);
         res.reply({
 
         });
     }).shortvideo(function (message , req ,res ,next) {
+        console.log(message);
         res.reply({
 
         });
     }).location(function (message ,req ,res ,next) {
+        console.log(message);
         res.reply({
             type : 'text',
             content: '您的地理位置是：' +  message.Label+
-                     '<br>纬度：' + Math.round(message.Location_X*100)/100 + ',' + '<br>经度：' + Math.round(message.Location_Y*100)/100
+                     '纬度：' + Math.round(message.Location_X*100)/100 + ',' + '经度：' + Math.round(message.Location_Y*100)/100
         });
     }).link(function (message , req , res ,next) {
+        console.log(message);
         res.reply({
 
         });
     }).event(function (message , req, res ,next) {
-
+        console.log(message);
         switch (message.Event) {
             case 'subscribe':
                 var openid=message.FromUserName;
 
                 res.reply({
                     type : 'text',
-                    content:'欢迎关注Ring纪念坊~~~<br> ' +
-                            '回复 blog 查看我的博客<br>' +
-                            '回复 github 访问我的github<br>' +
-                            '回复任意非负整数字，返回其所有公约数<br>' +
+                    content:'欢迎关注Ring纪念坊~~~' +
+                            '回复 blog 查看我的博客' +
+                            '回复 github 访问我的github' +
+                            '回复任意非负整数字，返回其所有公约数' +
                             '回复其他, 返回你发的数据'
                 });
                 break;
@@ -149,10 +155,12 @@ router.use('/' ,  wechat(config ,
         }
 
     }).device_text(function (message ,req , res ,next) {
+        console.log(message);
         res.reply({
 
         });
     }).device_event(function (message , req ,res ,next) {
+        console.log(message);
         res.reply({
 
         });
