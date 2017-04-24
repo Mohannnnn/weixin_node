@@ -132,11 +132,11 @@ router.use('/' ,  wechat(config ,
 
                 res.reply({
                     type : 'text',
-                    content:'欢迎关注Ring纪念坊~~~' +
-                            '回复 blog 查看我的博客' +
-                            '回复 github 访问我的github' +
-                            '回复任意非负整数字，返回其所有公约数' +
-                            '回复其他, 返回你发的数据'
+                    content:'欢迎关注Ring纪念坊~~~~~~' +
+                            '回复 blog 查看我的博客~~~~~' +
+                            '回复 github 访问我的github~~~' +
+                            '回复任意非负整数字，返回其所有公约数~~~' +
+                            '回复其他, 返回你发的数据~~~'
                 });
                 break;
             case 'unsubscribe':
