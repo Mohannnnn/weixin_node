@@ -129,7 +129,7 @@ router.use('/' ,  wechat(config ,
                     content:'欢迎关注Ring纪念坊~~~<br> ' +
                             '回复 blog 查看我的博客<br>' +
                             '回复 github 访问我的github<br>' +
-                            '回复任意字，返回其所有公约数<br>' +
+                            '回复任意非负整数字，返回其所有公约数<br>' +
                             '回复其他, 返回你发的数据'
                 });
                 break;
