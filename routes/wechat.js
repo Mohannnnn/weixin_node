@@ -10,7 +10,6 @@ const config = require('../config.js');
 
 
 const location  = {
-    label : '',
     location_X : '',
     location_Y : ''
 };
@@ -123,8 +122,8 @@ router.use('/' ,  wechat(config ,
         } else if ( recognition.indexOf('QQ') != -1) {
             res.reply([{
                 title : '扫描二维码加我QQ',
-                picurl: 'http://user.qzone.qq.com/1063022109/311/',
-                url : 'http://user.qzone.qq.com/1063022109/311/'
+                picurl: 'http://a3.qpic.cn/psb?/V121vZvA3qNkcO/7FpmVokzdsAKzS8jOjPR51djZSX9zLbk0wfpRvgwO0k!/m/dFYBAAAAAAAA&ek=1&kp=1&pt=0&bo=HALkAgAAAAAREN8!&tm=1493121600&sce=60-3-3&rf=0-0',
+                url : 'http://a3.qpic.cn/psb?/V121vZvA3qNkcO/7FpmVokzdsAKzS8jOjPR51djZSX9zLbk0wfpRvgwO0k!/m/dFYBAAAAAAAA&ek=1&kp=1&pt=0&bo=HALkAgAAAAAREN8!&tm=1493121600&sce=60-3-3&rf=0-0'
             }]);
         } else if (recognition.indexOf('微信') != -1 || recognition.indexOf('信') != -1 ) {
             res.reply([{
@@ -180,20 +179,19 @@ router.use('/' ,  wechat(config ,
                 res.reply('亲,请不要离开我!!');
                 break;
             case 'LOCATION' :
-                location.label = message.Label;
-                location.location_X = Math.round(message.Location_X*100)/100;
-                location.location_Y = Math.round(message.Location_Y*100)/100
+                location.location_X = Math.round(message.Latitude*100)/100;
+                location.location_Y = Math.round(message.Longitude*100)/100
                 break;
             case 'CLICK' :
                 switch (message.EventKey) {
                     case 'V1001_CONNECT_QQ' :
                         res.reply([{
                             title : '扫描二维码加我QQ',
-                            picurl: 'http://user.qzone.qq.com/1063022109/311/',
-                            url : 'http://user.qzone.qq.com/1063022109/311/'
+                            picurl: 'http://a3.qpic.cn/psb?/V121vZvA3qNkcO/7FpmVokzdsAKzS8jOjPR51djZSX9zLbk0wfpRvgwO0k!/m/dFYBAAAAAAAA&ek=1&kp=1&pt=0&bo=HALkAgAAAAAREN8!&tm=1493121600&sce=60-3-3&rf=0-0',
+                            url : 'http://a3.qpic.cn/psb?/V121vZvA3qNkcO/7FpmVokzdsAKzS8jOjPR51djZSX9zLbk0wfpRvgwO0k!/m/dFYBAAAAAAAA&ek=1&kp=1&pt=0&bo=HALkAgAAAAAREN8!&tm=1493121600&sce=60-3-3&rf=0-0'
                         }]);
                         break;
-                    case 'V1001_CONNECT_weixin' :
+                    case 'V1001_CONNECT_WEIXIN' :
                         res.reply([{
                             title : '扫描二维码加我微信',
                             picurl: 'http://a3.qpic.cn/psb?/V121vZvA3qNkcO/jyXxR3xaQI6YvWfgN3GpEJ0DqeyFgJpZwDbF14jxhFg!/m/dGoBAAAAAAAA&ek=1&kp=1&pt=0&bo=rgGuAQAAAAARECc!&tm=1493121600&sce=60-3-3&rf=0-0',
@@ -203,7 +201,7 @@ router.use('/' ,  wechat(config ,
                     case 'V1002_LOCATION_NOW' :
                         res.reply({
                             type : 'text',
-                            content: '您的地理位置是：' +  location.label + "\n" +
+                            content: '您的地理位置是：' + "\n\n" +
                             '纬度：' + location.location_X + '\n' +
                             '经度：' + location.location_Y
                         });
