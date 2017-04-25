@@ -91,8 +91,8 @@ router.use('/' ,  wechat(config ,
         if(recognition.indexOf('github') != -1 || recognition.indexOf('不') != -1) {
             res.reply([
                 {
-                    title: '这是我的Github,欢迎start、fork',
-                    decription : '您说的是：' + recognition + '\n\n' + '是否想找：github',
+                    title: '您说的是：' + recognition + '\n' + '是否想找：github' + '\n' + '以下是查找结果：',
+                    description : '这是我的Github,欢迎start、fork',
                     picurl: 'http://img2.niushe.com/upload/201304/19/14-22-31-71-26144.jpg',
                     url: 'https://github.com/fututer'
                 }
@@ -201,7 +201,7 @@ router.use('/' ,  wechat(config ,
                     case 'V1002_LOCATION_NOW' :
                         res.reply({
                             type : 'text',
-                            content: '您的地理位置是：' + "\n\n" +
+                            content: '您的地理位置是：' + "\n" +
                             '纬度：' + location.location_X + '\n' +
                             '经度：' + location.location_Y
                         });
